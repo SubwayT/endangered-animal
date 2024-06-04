@@ -1,1 +1,80 @@
-# endangered-animal
+/* scheme */
+
+/* 種のテーブル */
+DROP TABLE IF EXISTS species;
+CREATE TABLE species (
+    species_id INTEGER PRIMARY KEY,
+    species_name VARCHAR(255) NOT NULL
+);
+
+/* 保護活動のテーブル */
+DROP TABLE IF EXISTS conservation_activities;
+CREATE TABLE conservation_activities (
+    activity_id INTEGER PRIMARY KEY,
+    activity_name VARCHAR(255) NOT NULL
+);
+
+/* 種ごとの保護活動のテーブル */
+DROP TABLE IF EXISTS species_activities;
+CREATE TABLE species_activities (
+    species_id INTEGER,
+    activity_id INTEGER,
+    activity_status BOOLEAN,
+    FOREIGN KEY (species_id) REFERENCES species(species_id),
+    FOREIGN KEY (activity_id) REFERENCES conservation_activities(activity_id)
+);
+
+/* 種のidと名前を挿入 */
+INSERT INTO species (species_id, species_name) VALUES
+(1, 'Pancake Tortoise'),
+(2, 'Radiated Tortoise'),
+(3, 'Ploughshare Tortoise'),
+(4, 'Geometric Tortoise'),
+(5, 'Spider Tortoise'),
+(6, 'African Spurred Tortoise'),
+(7, 'Homes Hinge-back Tortoise'),
+(8, 'Testudo kleinmanni'),
+(9, 'Speckled Dwarf Tortoise'),
+(10, 'Flat-tailed Tortoise'),
+(11, 'Karoo Dwarf Tortoise'),
+(12, 'Zambezi Flapshell Turtle'),
+(13, 'Hawksbill Turtle'),
+(14, 'Green Turtle'),
+(15, 'Wattle-necked Softshell Turtle'),
+(16, 'Nubian Flapshell Turtle'),
+(17, 'Madagascar Big-headed Turtle');
+
+/* 保護活動のidと項目を挿入 */
+INSERT INTO conservation_activities (activity_id, activity_name) VALUES
+(1, 'Conservation sites identified'),
+(2, 'Subject to ex-situ conservation'),
+(3, 'Subject to recent education and awareness programmes'),
+(4, 'Included in international legislation'),
+(5, 'Action recovery plan'),
+(6, 'Systematic monitoring scheme'),
+(7, 'Area based regional management plan'),
+(8, 'Occurs in at least one protected area'),
+(9, 'Subject to any international management/trade controls'),
+(10, 'Successfully reintroduce or introduce benignly'),
+(11, 'Invasive species control or prevention'),
+(12, 'Harvest management plan');
+
+/* 種ごとの保護活動とその状態を挿入 */
+INSERT INTO species_activities (species_id, activity_id, activity_status) VALUES
+(1, 1, TRUE), (1, 5, FALSE), (1, 6, FALSE), (1, 7, FALSE), (1, 8, TRUE),
+(2, 1, TRUE), (2, 2, TRUE), (2, 3, TRUE), (2, 4, TRUE), (2, 8, TRUE), (2, 9, TRUE),
+(3, 1, TRUE), (3, 2, FALSE), (3, 3, TRUE), (3, 4, TRUE), (3, 5, TRUE), (3, 6, FALSE), (3, 8, TRUE), (3, 9, TRUE), (3, 10, FALSE), (3, 11, TRUE), (3, 12, FALSE),
+(4, 1, TRUE), (4, 2, FALSE), (4, 3, TRUE), (4, 5, TRUE), (4, 6, FALSE), (4, 8, TRUE), (4, 9, TRUE), (4, 10, FALSE), (4, 11, TRUE), (4, 12, FALSE),
+(5, 1, TRUE), (5, 2, TRUE), (5, 4, TRUE), (5, 7, FALSE), (5, 8, TRUE), (5, 9, TRUE),
+(6, 1, TRUE), (6, 2, TRUE), (6, 4, TRUE), (6, 8, TRUE), (6, 9, TRUE), (6, 10, TRUE),
+(7, 1, TRUE), (7, 4, TRUE), (7, 5, FALSE), (7, 6, FALSE), (7, 8, TRUE), (7, 9, TRUE),
+(8, 2, TRUE), (8, 4, TRUE), (8, 9, TRUE),
+(9, 1, FALSE), (9, 2, TRUE), (9, 4, TRUE), (9, 5, FALSE), (9, 6, FALSE), (9, 8, TRUE), (9, 9, TRUE),
+(10, 1, TRUE), (10, 2, TRUE), (10, 3, TRUE), (10, 4, TRUE), (10, 8, TRUE), (10, 9, TRUE),
+(11, 1, FALSE), (11, 2, FALSE), (11, 3, FALSE), (11, 4, TRUE), (11, 5, FALSE), (11, 6, FALSE), (11, 8, TRUE), (11, 9, TRUE), (11, 10, FALSE), (11, 12, FALSE),
+(12, 2, FALSE), (12, 4, FALSE), (12, 5, FALSE), (12, 6, FALSE), (12, 8, TRUE), (12, 9, FALSE), (12, 10, FALSE), (12, 12, FALSE),
+(13, 3, TRUE), (13, 4, TRUE), (13, 8, TRUE), (13, 9, TRUE),
+(14, 4, TRUE), (14, 9, TRUE),
+(15, 4, TRUE), (15, 8, TRUE), (15, 9, TRUE),
+(16, 1, FALSE), (16, 2, FALSE), (16, 3, FALSE), (16, 4, FALSE), (16, 5, FALSE), (16, 6, FALSE), (16, 9, FALSE), (16, 10, FALSE), (16, 12, FALSE),
+(17, 1, TRUE), (17, 2, TRUE), (17, 3, TRUE), (17, 4, TRUE), (17, 9, TRUE), (17, 10, TRUE);
