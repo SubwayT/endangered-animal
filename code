@@ -78,3 +78,41 @@ INSERT INTO species_activities (species_id, activity_id, activity_status) VALUES
 (15, 4, TRUE), (15, 8, TRUE), (15, 9, TRUE),
 (16, 1, FALSE), (16, 2, FALSE), (16, 3, FALSE), (16, 4, FALSE), (16, 5, FALSE), (16, 6, FALSE), (16, 9, FALSE), (16, 10, FALSE), (16, 12, FALSE),
 (17, 1, TRUE), (17, 2, TRUE), (17, 3, TRUE), (17, 4, TRUE), (17, 9, TRUE), (17, 10, TRUE);
+
+/* query */
+SELECT 
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 1 AND activity_status = TRUE) * 1.0 / 
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 1) AS true_rate_1,
+    
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 2 AND activity_status = TRUE) * 1.0 / 
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 2) AS true_rate_2,
+    
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 3 AND activity_status = TRUE) * 1.0 / 
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 3) AS true_rate_3,
+    
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 4 AND activity_status = TRUE) * 1.0 / 
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 4) AS true_rate_4,
+    
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 5 AND activity_status = TRUE) * 1.0 / 
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 5) AS true_rate_5,
+    
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 6 AND activity_status = TRUE) * 1.0 / 
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 6) AS true_rate_6,
+    
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 7 AND activity_status = TRUE) * 1.0 / 
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 7) AS true_rate_7,
+    
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 8 AND activity_status = TRUE) * 1.0 / 
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 8) AS true_rate_8,
+    
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 9 AND activity_status = TRUE) * 1.0 / 
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 9) AS true_rate_9,
+    
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 10 AND activity_status = TRUE) * 1.0 / 
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 10) AS true_rate_10,
+    
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 11 AND activity_status = TRUE) * 1.0 / 
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 11) AS true_rate_11,
+    
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 12 AND activity_status = TRUE) * 1.0 / 
+    (SELECT COUNT(*) FROM species_activities WHERE activity_id = 12) AS true_rate_12;
